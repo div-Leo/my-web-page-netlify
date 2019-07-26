@@ -1,0 +1,81 @@
+.nav
+  position: fixed
+  display: flex
+  z-index: 10
+  width: 100vw
+  height: 10vh
+  justify-content: space-between
+  align-items: center
+  padding: 20px
+  font-weight: 600
+  @include themify($themes)
+    background: linear-gradient(themed('background'), transparentize(themed('background'), 0.9))
+  div
+    flex: 1
+
+.nav_title
+  text-align: center
+  font-size: 1.3rem
+  &:first-letter
+    text-transform: capitalize
+
+.nav_note
+  text-align: right
+  display: flex
+  align-items: center
+  justify-content: flex-end
+    font-size: .8em
+  span
+    margin-left: 10px
+    font-size: 1.3em
+
+.scroll_height
+  content: ""
+  position: fixed
+  z-index: 11
+  top: 0
+  left: 0
+  height: 1px
+  width: 10%
+  transition: width 0.1s
+  @include themify($themes)
+    border-bottom: 4px solid themed('color')
+
+.mouse_container
+  position: fixed
+  bottom: 2vh
+  width: 3vw
+  left: 50vw;
+  transform: translateX(-50%);
+  text-align: center
+  transition: opacity 0.5s ease
+  
+.mouse
+  @include themify($themes)
+    border: 3px solid themed('color')
+  width: 20px
+  background-color: transparent
+  height: 30px
+  border-radius: 10px
+  margin: 0 auto
+    
+.mouse_wheel
+  width: 4px
+  height: 7px
+  @include themify($themes)
+    background: themed('color')
+  border-radius: 2px
+  margin: auto
+  animation: scrollWheel 1.5s infinite ease
+
+@keyframes scrollWheel
+  0% 
+    margin-top: 3px
+    opacity: 0
+  20% 
+    opacity: 1
+  80% 
+    opacity: 1
+  100% 
+    margin-top: 12px 
+    opacity: 0

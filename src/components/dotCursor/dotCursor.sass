@@ -1,0 +1,24 @@
+$size: 10px
+
+.dot_cursor
+  pointer-events: none
+  position: fixed
+  z-index: 10
+  top: 50%
+  left: 50%
+  border-radius: 50%
+  transform-origin: center
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out
+  width: $size
+  height: $size
+  background: #222
+  opacity: 1
+  @include themify($themes)
+    background: themed('color')
+  &.--hidden
+    opacity: 0
+  &.--hover
+    opacity: 0.3
+    transform: scale(4)
+  @media only screen and (max-width: 768px)
+    opacity: 0 !important

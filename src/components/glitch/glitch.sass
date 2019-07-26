@@ -1,0 +1,50 @@
+.glitch_container
+  height: 100vh
+  display: flex
+  align-items: center
+
+.glitch
+  font-size: 3rem
+  font-weight: 800
+  position: relative
+  width: 100vw
+  text-align: center
+  @media only screen and (max-width: 768px)
+    font-size: 2rem
+  &:after,
+  &:before
+    content: attr(data-text)
+    position: absolute
+    width: 100vw
+    overflow: hidden
+    clip: rect(0,900px,0,0)
+    animation: noise-anim 3s infinite linear alternate-reverse
+    @media only screen and (max-width: 768px)
+      animation: noise-anim-mobile 3s infinite linear alternate-reverse
+  &:after
+    text-shadow: -1px 0 red
+    left: -3px
+    top: -1px
+  &:before
+    text-shadow: 1px 0 blue
+    left: 3px
+    top: 1px
+    animation-duration: 4s
+
+@keyframes noise-anim
+  $steps: 25
+  @for $i from 0 through $steps
+    #{percentage($i*(1/$steps))}
+      clip: rect(random(200)+px,9999px,random(100)+px,0)
+
+@keyframes noise-anim-mobile
+  $steps: 25
+  @for $i from 0 through $steps
+    #{percentage($i*(1/$steps))}
+      clip: rect(random(200)+px,9999px,random(400)+px,0)
+
+.glitch
+.glitch:before,
+.glitch:after
+  @include themify($themes)
+    background: darken(themed('background'), 0.5%)

@@ -1,0 +1,21 @@
+$themes: ( light: ( background: $light-background, color: $light-text, box-shadow: $light-box-shadow ), dark: ( background: $dark-background, color: $dark-text, box-shadow: $dark-box-shadow));
+
+=themify($themes) // $themes var
+  @each $theme, $props in $themes // for each $theme = dark - $props = ( background: ... color: ...)
+    .#{$theme}_theme & // is goign to include this new rule
+      $theme-props: $props !global; // global temporary variable 
+      @content; // this takes the children props and adds it as rules
+      $theme-props: null !global; // empty global temporary variable
+
+@function themed($key) 
+  @return map-get($theme-props, $key) // {background: #333, color: #FFF }, 'background' => #333
+
+.layout
+  +themify($themes)
+    background: themed('background')
+    color: themed('color')
+
+// OUTCOME:
+//   .dark_theme .layout
+//     background: #333
+//     color: #FFF 

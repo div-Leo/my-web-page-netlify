@@ -1,0 +1,68 @@
+
+.menu_burger,
+.menu_close
+  float: right
+  position: relative
+  z-index: 2
+  width: 26px
+  height: 26px
+  margin: 0
+  padding: 0
+  background: transparent
+  border: none
+  outline: none
+  overflow: hidden
+
+.menu_burger div,
+.menu_close div
+  position: absolute
+  transition: all 0.3s ease-in-out
+  transform: translate(-50%, -50%)
+  border: none
+  height: 11%
+  @include themify($themes)
+    background: themed('color')
+
+.menu_burger div:nth-child(1)
+  transition-delay: 0.1s
+  top: 25%
+  left: 50%
+  width: 87.5%
+
+.menu_burger div:nth-child(2),
+.menu_burger div:nth-child(3)
+  top: 50%
+  left: 50%
+  width: 87.5%
+  
+.menu_burger div:nth-child(4)
+  transition-delay: 0.1s
+  top: 75%
+  left: 70%
+  width: 50%
+  transition-duration: 0.1s
+
+.menu_close div:nth-child(1)
+  top: 25%
+  left: 100%
+  width: 0%
+
+.menu_close div:nth-child(4)
+  transition-duration: 0.1s
+  top: 75%
+  left: 100%
+  width: 0%
+
+.menu_close div:nth-child(2)
+  transition-delay: 0.1s
+  top: 50%
+  left: 50%
+  width: 100%
+  transform: translate(-50%, -50%) rotate(45deg)
+
+.menu_close div:nth-child(3),
+  transition-delay: 0.1s
+  top: 50%
+  left: 50%
+  width: 100%
+  transform: translate(-50%, -50%) rotate(-45deg)
