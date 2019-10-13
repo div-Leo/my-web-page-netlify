@@ -1,0 +1,43 @@
+.form_container
+  margin: auto
+  width: 50vw
+  @media only screen and (max-width: 768px)
+    width: 90vw
+
+  form 
+    display: flex
+    flex-direction: column
+
+  input,
+  textarea
+    font-size: 1em
+    padding: 15px 15px
+    margin: 10px 0px
+    border: none
+    border-radius: 3px
+    +themify($themes)
+      background: themed('secondary')
+      box-shadow: themed('box-shadow')
+
+  textarea
+    min-height: 15vh 
+    min-width: 100%
+    max-width: 100%
+  
+.form_submit
+  align-self: flex-end
+  input
+    font-weight: 500
+    padding: 10px 30px
+    transition: all .5s
+    // &:hover
+    //   +themify($themes)
+    //     background: themed('primary')
+    //     color: themed('secondary')
+
+.email_credits
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: 0.6em
+  margin: 0px auto 30px auto
