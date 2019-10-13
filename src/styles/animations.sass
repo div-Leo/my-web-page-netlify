@@ -1,0 +1,73 @@
+.revealText
+	position: relative
+	animation-name: clipText
+	white-space: nowrap
+	
+	&::after
+		content: ""
+		position: absolute
+		z-index: 999
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+    border-radius: 3px
+		+themify($themes)
+      background: themed('primary')
+		transform: scaleX(0)
+		transform-origin: 0 50%
+		pointer-events: none
+		animation-name: textRevealer
+
+.revealText,
+.revealText::after
+	animation-delay: 1.4s
+	animation-iteration-count: 1
+	animation-duration: 1.5s
+	animation-fill-mode: both
+	animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1) 
+
+@keyframes clipText
+	from
+		clip-path: inset(0 100% 0 0)
+	to
+		clip-path: inset(0 0 0 0)
+
+@keyframes textRevealer
+	0%, 40%
+		transform-origin: 0 50%
+	50%, 100%
+		transform-origin: 100% 50%	
+	50%
+		transform: scaleX(1)
+	100%
+		transform: scaleX(0)
+
+.fadeOut
+  opacity: 0
+  transition: 1s opacity
+
+.fadeInUp
+  animation-name: fadeInUp
+  animation-duration: 1s
+  animation-iteration-count: 1
+
+@keyframes fadeInUp
+  from
+    opacity: 0
+    transform: translate3d(0, 70px, 0)
+  to
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+.slideInLeft
+  animation-name: slideInLeft
+  animation-duration: 2s
+  animation-iteration-count: 1
+
+@keyframes slideInLeft 
+  from 
+    transform: translate3d(-100%, 0, 0)
+    visibility: visible
+  to 
+    transform: translate3d(0, 0, 0)

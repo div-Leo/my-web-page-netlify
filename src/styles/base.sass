@@ -13,11 +13,15 @@ body
   padding: 0
   user-select: none
   font-family: 'Avenir','Montserrat', sans-serif
+  +themify($themes)
+    background: themed('secondary')
+    color: themed('primary')
 
 input:-webkit-autofill
  -webkit-box-shadow: 0 0 0 50px white inset
 
-input, input:focus
+input, input:focus,
+textarea, textarea:focus
   outline: none
   font-family: inherit
 
