@@ -8,13 +8,13 @@ import emoji from '../../components/utils/emoji'
 const Header = ({ siteTitle, page }) => {  
   return (
     <>
-    <ScrollPercenteage/>
-    <div className="nav" >
-      <div className="nav_logo">div.Leo</div>
-      <div className="nav_title">{siteTitle}</div>
-      <div className="nav_note"> today I'm feeling <span>{emoji()}</span></div>
-    </div>
-    <ScrollBtn/>
+      <ScrollPercenteage/>
+      <div className="nav" >
+        <div className="nav_logo">div.Leo</div>
+        <div className="nav_title">{siteTitle}</div>
+        <div className="nav_note"> today I'm feeling <span>{emoji()}</span></div>
+      </div>
+      <ScrollBtn/>
     </>
   )
 }
