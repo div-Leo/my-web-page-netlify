@@ -39,9 +39,9 @@ const Form = () => {
         <input type="text" name="reply_to" onChange={handleChange} placeholder="Your Email" /> 
         <input type="text" onChange={handleChange} name="subject" placeholder="Subject" />
         <textarea name="text" onChange={handleChange} placeholder="Message"></textarea>
-        <a className="form_submit"><input  type="submit" disabled={status === 'send'} value={status}/></a>
-        <div className="email_credits">
-          <p>Powered by <a href="https://postmail.invotes.com" target="_blank">PostMail</a></p>
+        <div className="form_submit">
+          <p className="email_credits">Powered by <a href="https://postmail.invotes.com" target="_blank">PostMail</a></p>
+          <a><input  type="submit" disabled={status === 'send'} value={status}/></a>
         </div>
       </form>
     </div>
