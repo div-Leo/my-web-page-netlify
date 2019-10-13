@@ -1,0 +1,56 @@
+
+.likes_container
+  position: relative
+  @media only screen and (max-width: 768px)
+    margin-bottom: 50px
+
+.likes_slider
+  width: 415px
+  overflow: hidden
+  position: relative
+  padding: 20px
+  margin: 20px
+  border-radius: 3px
+  font-size: 1.5rem
+  +themify($themes)
+    background: themed('secondary')
+    box-shadow: themed('box-shadow')
+  @media only screen and (max-width: 768px)
+    width: 340px
+    margin: 20px auto
+
+.likes_slider::before,
+.likes_slider::after
+  content: ""
+  width: 50px
+  position: absolute
+  height: 100%
+  z-index: 2
+  +themify($themes)
+    background: linear-gradient(to right, themed('secondary') 0%, rgba(themed('secondary'), .0) 100%)
+	
+.likes_slider::after
+  transform: rotateZ(180deg)
+  right: 0
+  top: 0
+
+.likes_slider::before
+  left: 0
+  top: 0
+	
+.likes
+  animation: slider-horizontal 40s infinite
+  display: flex
+  width: calc(75px * 40)
+  transition: .5s all ease
+  span
+    width: 25px
+    margin: 0 25px
+
+@keyframes slider-horizontal
+  $steps: 21
+  @for $i from 0 through $steps
+    #{percentage($i*(1/$steps))}
+      transform: translateX(calc(#{-75px * $i}))
+    #{percentage(($i*(1/$steps))+0.025)}
+      transform: translateX(calc(#{-75px * $i}))
