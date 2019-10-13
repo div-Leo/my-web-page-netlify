@@ -8,8 +8,8 @@
   align-items: center
   padding: 20px
   font-weight: 600
-  @include themify($themes)
-    background: linear-gradient(themed('background'), transparentize(themed('background'), 0.9))
+  +themify($themes)
+    background: linear-gradient(themed('secondary'), transparentize(themed('secondary'), 0.9))
   div
     flex: 1
 
@@ -38,8 +38,8 @@
   height: 1px
   width: 10%
   transition: width 0.1s
-  @include themify($themes)
-    border-bottom: 4px solid themed('color')
+  +themify($themes)
+    border-bottom: 4px solid themed('primary')
 
 .mouse_container
   position: fixed
@@ -48,34 +48,34 @@
   left: 50vw;
   transform: translateX(-50%);
   text-align: center
-  transition: opacity 0.5s ease
-  
-.mouse
-  @include themify($themes)
-    border: 3px solid themed('color')
-  width: 20px
-  background-color: transparent
-  height: 30px
-  border-radius: 10px
-  margin: 0 auto
-    
-.mouse_wheel
-  width: 4px
-  height: 7px
-  @include themify($themes)
-    background: themed('color')
-  border-radius: 2px
-  margin: auto
-  animation: scrollWheel 1.5s infinite ease
+  transition: opacity 0.2s ease
+  @media only screen and (max-width: 768px)
+    bottom: 5vh
 
-@keyframes scrollWheel
-  0% 
-    margin-top: 3px
+.mouse
+  margin: 0 auto
+  animation: fadeInDown 1.5s infinite ease
+  text-shadow: 0 0 2px #0007
+  &:after
+    content: "🖱"
+  @media only screen and (max-width: 768px)
+    font-size: 1.8em
+    animation: fadeInUpScroll 1.5s infinite ease
+    &:after
+      content: "👈"
+
+@keyframes fadeInDown
+  from
     opacity: 0
-  20% 
+    transform: translate3d(0, -100%, 0)
+  to
     opacity: 1
-  80% 
-    opacity: 1
-  100% 
-    margin-top: 12px 
+    transform: translate3d(0, 0, 0)
+
+@keyframes fadeInUpScroll
+  from
     opacity: 0
+    transform: translate3d(0, 50%, 0)
+  to
+    opacity: 1
+    transform: translate3d(0, -50%, 0)

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types";
 
+import { document } from 'browser-monads';
+
 import emoji from '../../components/utils/emoji'
 
 const Header = ({ siteTitle, page }) => {  
@@ -23,7 +25,7 @@ const ScrollBtn = () => {
 
   const scrollDonw = () => {
     window.scroll({
-      top: d.clientHeight-200,
+      top: d.clientHeight-250,
       behavior: 'smooth'
     });
   }
@@ -31,12 +33,10 @@ const ScrollBtn = () => {
   useEffect(() => { 
     window.addEventListener('scroll', () => d.scrollTop < 100 && setScrollTop((d.scrollTop))) 
   },[])
-
+  
   return (
-    <a className="mouse_container" onClick={scrollDonw} style={{display: scrollTop ? 'none' : 'block'}}>
-      <div className='mouse'>
-        <div className="mouse_wheel"></div>
-      </div>
+    <a className="mouse_container" onClick={scrollDonw} style={{opacity: scrollTop ? 0 : 1, pointerEvents: scrollTop ? 'none' : 'auto'}}>
+      <div className='mouse'></div> 
     </a>
   )
 }

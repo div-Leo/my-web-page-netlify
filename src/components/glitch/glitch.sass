@@ -4,7 +4,7 @@
   align-items: center
 
 .glitch
-  font-size: 3rem
+  font-size: 4rem
   font-weight: 800
   position: relative
   width: 100vw
@@ -46,5 +46,5 @@
 .glitch
 .glitch:before,
 .glitch:after
-  @include themify($themes)
-    background: darken(themed('background'), 0.5%)
+  +themify($themes)
+    background: darken(themed('secondary'), 1.5%)

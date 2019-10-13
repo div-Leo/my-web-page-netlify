@@ -20,8 +20,8 @@
   transform: translate(-50%, -50%)
   border: none
   height: 11%
-  @include themify($themes)
-    background: themed('color')
+  +themify($themes)
+    background: themed('primary')
 
 .menu_burger div:nth-child(1)
   transition-delay: 0.1s
