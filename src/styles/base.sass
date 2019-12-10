@@ -4,7 +4,9 @@
 html
   box-sizing: border-box
 
-*, *:before, *:after
+*, 
+*:before, 
+*:after
   box-sizing: inherit
   cursor: none
   -webkit-appearance: none
@@ -19,18 +21,22 @@ body
     background: themed('secondary')
     color: themed('primary')
 
-input:-webkit-autofill
- -webkit-box-shadow: 0 0 0 50px white inset
+input:-webkit-autofill,
+input:-internal-autofill-selected
+  +themify($themes)
+    background: themed('secondary') !important
+    color: themed('primary') !important
 
 input, input:focus,
 textarea, textarea:focus
   outline: none
   font-family: inherit
+  border: none
 
 button, button:focus button:active
   outline: none
   border: none
-  cursor: pointer
+  cursor: none
   font-family: inherit
 
 a, a:focus a:active

@@ -1,6 +1,7 @@
 .form_container
+  position: relative
   margin: auto
-  width: 50vw
+  width: 35vw
   @media only screen and (max-width: 768px)
     width: 90vw
 
@@ -9,16 +10,20 @@
     flex-direction: column
 
   input,
-  textarea
-    font-size: 1em
+  textarea,
+  button
+    font-size: 1rem
     padding: 15px 15px
     margin: 10px 0px
-    border: none
+    transition: all .3s
     border-radius: 3px
     +themify($themes)
-      background: themed('secondary') !important
-      background-color: themed('secondary') !important
-      box-shadow: themed('box-shadow') !important
+      background: themed('secondary')
+      box-shadow: themed('box-shadow')
+      color: themed('primary')
+
+  input
+    height: 55px
 
   textarea
     min-height: 15vh 
@@ -29,16 +34,51 @@
   align-self: flex-end
   display: flex
   margin: 0px 0px 30px 0px
-  input
+  button
     font-weight: 500
-    padding: 10px 30px
-    transition: all .5s
-
+    padding: 10px 40px
+    +themify($themes)
+      background: darken(themed('secondary'), 3%)
+      color: themed('primary')
+      box-shadow: themed('box-shadow')
+      
 .email_credits
   display: flex
   justify-content: center
   align-items: center
-  font-size: 0.6em
-  margin: 0px 15px
+  font-size: 0.7rem
+  font-weight: 200
+  margin-top: 25px 
   a
     text-decoration: underline
+
+.from_modal
+  position: absolute
+  height: 100%
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  top: 0
+  left 0
+  +themify($themes)
+    background: transparentize(themed('secondary'), .2)
+
+.modal_box
+  margin: auto
+  border-radius: 3px
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  text-align: center
+  width: 250px
+  padding: 40px 40px 20px 40px
+  font-size: 1rem
+  font-weight: 500
+  +themify($themes)
+    background: themed('secondary')
+    color: themed('primary')
+    box-shadow: themed('box-shadow')
+  span
+    font-size: 1.5rem

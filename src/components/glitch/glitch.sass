@@ -17,7 +17,7 @@
     position: absolute
     width: 100vw
     overflow: hidden
-    clip: rect(0,900px,0,0)
+    clip: rect(0, 900px, 0, 0)
     animation: noise-anim 3s infinite linear alternate-reverse
     @media only screen and (max-width: 768px)
       animation: noise-anim-mobile 3s infinite linear alternate-reverse
@@ -35,15 +35,14 @@
   $steps: 25
   @for $i from 0 through $steps
     #{percentage($i*(1/$steps))}
-      clip: rect(random(200)+px,9999px,random(100)+px,0)
+      clip: rect(random(200)+px, 9999px, random(100)+px, 0)
 
 @keyframes noise-anim-mobile
   $steps: 25
   @for $i from 0 through $steps
     #{percentage($i*(1/$steps))}
-      clip: rect(random(200)+px,9999px,random(400)+px,0)
+      clip: rect(random(200)+px, 9999px, random(400)+px, 0)
 
-.glitch
 .glitch:before,
 .glitch:after
   +themify($themes)

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { sendEmail } from "../utils/sendEmail";
+import Spinner from "../spinner";
 
 const initialState = {
   subject: '',
@@ -10,7 +11,7 @@ const initialState = {
 
 const Form = () => {
   const [state, setState] = useState(initialState)
-  const [status, setStatus] = useState('Send')
+  const [status, setStatus] = useState('')
 
   const handleChange = ({ target }) => {
     setState(state => ({
@@ -21,29 +22,52 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus('Sending…')
-    sendEmail(state, onSuccess, onError)
+    if (state.subject === 'error' || state.text === 'error') return;
+    setStatus('pending');
+    setTimeout(() => {
+      sendEmail(state, onSuccess, onError);
+    }, 100)
   }
 
   const onSuccess = (res) => { 
-    setStatus('Sent!')
+    setState(initialState);
+    setStatus('success');
+    setTimeout(() => {
+      setStatus('');
+    }, 2500);
   }
 
   const onError = (err) => {
-    console.log('err', err);
+    err.split('.').forEach(err => {
+      const field = err.trim().split(' ')[0]
+      setState(state => ({
+        ...state, 
+        [field]: 'error',
+      }))
+    })
+    setStatus('error');
   }
 
   return (
     <div className="form_container" >
       <form onSubmit={handleSubmit}>
         <input type="text" name="reply_to" onChange={handleChange} placeholder="Your Email" /> 
-        <input type="text" onChange={handleChange} name="subject" placeholder="Subject" />
-        <textarea name="text" onChange={handleChange} placeholder="Message"></textarea>
+        <input style={{border: state.subject === 'error' ? '3px solid #d44' : 'none' }} type="text" onChange={handleChange} name="subject" placeholder="Subject" />
+        <textarea style={{border: state.text === 'error' ? '3px solid #d44' : 'none' }} name="text" onChange={handleChange} placeholder="Message"></textarea>
         <div className="form_submit">
-          <p className="email_credits">Powered by <a href="https://postmail.invotes.com" target="_blank">PostMail</a></p>
-          <a><input  type="submit" disabled={status === 'send'} value={status}/></a>
+          <a>
+            <button type="submit" disabled={status === 'pending'} >
+              {status === 'pending' ? <Spinner/> : 'Send'}
+            </button>
+          </a>
         </div>
       </form>
+      <div className="from_modal" style={{display: status === 'success' ? '' : 'none' }}  >
+        <div className="modal_box">
+          Thanks for contacting me! <span>🙏</span> I will get back to you ASAP
+          <p className="email_credits">Powered by <a href="https://postmail.invotes.com" target="_blank">PostMail</a></p>
+        </div>
+      </div>
     </div>
 )}
 

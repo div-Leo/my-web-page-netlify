@@ -12,7 +12,11 @@ const Header = ({ siteTitle, page }) => {
       <div className="nav" >
         <div className="nav_logo">div.Leo</div>
         <div className="nav_title">{siteTitle}</div>
-        <div className="nav_note"> today I'm feeling <span>{emoji()}</span></div>
+        <div className="nav_note"> 
+          <div className="note_text">
+            today I'm feeling 
+          </div>
+          <span>{emoji()}</span></div>
       </div>
       <ScrollBtn/>
     </>
