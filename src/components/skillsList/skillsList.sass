@@ -15,12 +15,13 @@
   @media only screen and (max-width: 768px)
     margin: 0 15px 40px 15px
     padding: 10px
-
-  &.--open
+  &--open
+    @extend .skills_list_container
     transform: scaleY(1)
     transition: 1.5s transform ease
 
-  &.--close
+  &--close
+    @extend .skills_list_container
     transition: .2s transform ease
     transform: scaleY(0)
 

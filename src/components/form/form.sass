@@ -8,18 +8,21 @@
   form 
     display: flex
     flex-direction: column
+    padding: 20px 50px
+    +themify($themes)
+      background: darken(themed('secondary'), 5)
 
   input,
-  textarea,
-  button
+  textarea
     font-size: 1rem
     padding: 15px 15px
     margin: 10px 0px
     transition: all .3s
-    border-radius: 3px
+    background: transparent
+    // border-radius: 3px
     +themify($themes)
-      background: themed('secondary')
-      box-shadow: themed('box-shadow')
+      border-bottom: 2px solid themed('primary') !important
+      // box-shadow: themed('box-shadow')
       color: themed('primary')
 
   input
@@ -33,12 +36,15 @@
 .form_submit
   align-self: flex-end
   display: flex
-  margin: 0px 0px 30px 0px
+  margin: 0px
   button
+    font-size: 1rem
+    margin-top: 20px
     font-weight: 500
     padding: 10px 40px
+    border-radius: 3px
     +themify($themes)
-      background: darken(themed('secondary'), 3%)
+      background: darken(themed('secondary'), 0%)
       color: themed('primary')
       box-shadow: themed('box-shadow')
       
@@ -46,7 +52,9 @@
   display: flex
   justify-content: center
   align-items: center
-  font-size: 0.7rem
+  font-size: .6rem
+  +themify($themes)
+      color: transparentize(themed('primary'), .4)
   font-weight: 200
   margin-top: 25px 
   a
@@ -63,6 +71,9 @@
   left 0
   +themify($themes)
     background: transparentize(themed('secondary'), .2)
+  &--active
+    @extend .from_modal
+
 
 .modal_box
   margin: auto
@@ -72,13 +83,15 @@
   justify-content: center
   align-items: center
   text-align: center
-  width: 250px
-  padding: 40px 40px 20px 40px
+  width: 300px
+  padding: 10px
   font-size: 1rem
   font-weight: 500
   +themify($themes)
     background: themed('secondary')
     color: themed('primary')
     box-shadow: themed('box-shadow')
+  p
+    margin: 5px
   span
     font-size: 1.5rem

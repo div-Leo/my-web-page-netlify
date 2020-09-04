@@ -1,23 +1,212 @@
-$size: 10px
+$size: 11px
 
-.dot_cursor
+.dot_cursor,
+.outline_cursor
   pointer-events: none
   position: fixed
   z-index: 10
   top: 50%
   left: 50%
   border-radius: 50%
+  transform: translate(-50%, -50%)
   transform-origin: center
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out
+  transition: opacity .3s ease-in-out, transform .3s ease-in-out
+  opacity: 1
+  &--hidden
+    opacity: 0
+
+.dot_cursor
   width: $size
   height: $size
-  opacity: 1
   +themify($themes)
     background: themed('primary')
-  &.--hidden
-    opacity: 0
-  &.--hover
-    opacity: 0.3
+  &--hover
+    @extend .dot_cursor
     transform: scale(4)
-  @media only screen and (max-width: 768px)
-    opacity: 0 !important
+    opacity: .2
+
+
+.outline_cursor
+  width: $size
+  height: $size
+  opacity: .2
+  +themify($themes)
+    background: themed('primary')
+  &--hover
+    @extend .outline_cursor
+    +themify($themes)
+      background: rgba(themed('secondary'), .6)
+    opacity: 1
+    font-size: 1rem
+    font-weight: 500
+    transform: translate(40px, -50%)
+    transform-origin: right
+    border-radius: 2px
+    width: unset
+    height: unset
+
+@keyframes pulse
+  from
+    transform: translate(-50%, -50%) scale(1)
+  to
+    transform: translate(-50%, -50%) scale(2)
+
+
+@media only screen and (max-width: 768px)
+  .dot_cursor,
+  .outline_cursor
+    display: none
+
+// $size: 12px
+
+// .outline_cursor,
+// .dot_cursor
+//   position: fixed
+//   pointer-events: none
+//   transform-origin: center
+//   border-radius: 50%
+
+// .dot_cursor
+//   width: $size
+//   height: $size
+//   z-index: 11
+//   // mix-blend-mode: difference
+//   transform: translate(-50%, -50%)
+//   transition: opacity .3s ease-in-out, transform .3s ease-in-out
+//   +themify($themes)
+//     background: themed('primary')
+//   &--hover
+//     @extend .dot_cursor
+//     transform: scale(4)
+//     opacity: .2
+
+// .outline_cursor
+//   width: $size * 2
+//   height: $size * 2
+//   z-index: 10
+//   transform-style: preserve-3d 
+//   transform: translate(-50%, -50%) rotateX(80deg) rotateY(20deg)
+//   div
+//     width: 100%
+//     height: 100%
+//     border-radius: 50%
+//     position: relative
+//     transform-style: preserve-3d
+//     animation: trail_ 2s infinite linear
+//     &:after
+//       content: ""
+//       position: absolute
+//       margin-left: -5px
+//       width: $size * .4
+//       height: $size * .4
+//       border-radius: 50%
+//       animation: particle_ 2s infinite linear
+//       +themify($themes)
+//         background: themed('primary')
+
+
+// .outline_cursor
+//   &--hidden
+//     opacity: 0
+//   &--hover
+//     @extend .outline_cursor
+//     font-size: 1rem
+//     font-weight: 500
+//     transform: translate(40px, -50%)
+//     transform-origin: right
+//     border-radius: 2px
+//     width: unset
+//     height: unset
+//     animation: unset
+//     div
+//       opacity: 0
+
+// @keyframes round 
+//   from
+//     transform: translate(-50%, -50%) rotate(0deg)
+//   to
+//     transform: translate(-50%, -50%) rotate(360deg)
+
+// @keyframes trail_ 
+//   from
+//     transform: rotateZ(0deg)
+//   to
+//     transform: rotateZ(360deg)
+  
+// @keyframes particle_ 
+//   from
+//     transform: rotateX(90deg) rotateY(0deg)
+//   to 
+//     transform: rotateX(90deg) rotateY(-360deg)
+
+// @media only screen and (max-width: 768px)
+//   .dot_cursor,
+//   .outline_cursor
+//     display: none
+
+
+$size: 12px
+
+.outline_cursor,
+.dot_cursor
+  position: fixed
+  pointer-events: none
+  transform-origin: center
+  border-radius: 50%
+
+.dot_cursor
+  width: $size
+  height: $size
+  z-index: 11
+  transform: translate(-50%, -50%)
+  transition: opacity .3s ease-in-out, transform .3s ease-in-out
+  +themify($themes)
+    background: themed('primary')
+  &--hover
+    @extend .dot_cursor
+    transform: scale(4)
+    opacity: .2
+
+.outline_cursor
+  width: $size * 2
+  height: $size * 2
+  z-index: 10
+  transform: translate(-50%, -50%)
+  animation: surround 2s infinite linear
+  // div
+  //   width: $size * .3
+  //   height: $size * .3
+  //   border-radius: 50%
+  //   position: relative
+  //   +themify($themes)
+  //     background: themed('primary')
+
+.outline_cursor
+  &--hidden
+    opacity: 0
+  &--hover
+    @extend .outline_cursor
+    font-size: 1rem
+    font-weight: 500
+    +themify($themes)
+      background: rgba(themed('secondary'), .6)
+    padding: 1px 5px
+    transform: translate(40px, -50%)
+    transform-origin: right
+    border-radius: 3px
+    width: unset
+    height: unset
+    animation: unset
+    div
+      opacity: 0
+
+@keyframes surround 
+  from
+    transform: translate(-50%, -50%) rotate(0deg)
+  to
+    transform: translate(-50%, -50%) rotate(360deg)
+
+@media only screen and (max-width: 768px)
+  .dot_cursor,
+  .outline_cursor
+    display: none

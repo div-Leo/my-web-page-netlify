@@ -3,10 +3,10 @@ import useRandomText from "../utils/randomText";
 
 const languages = [
   'We can speak in English if you want',
-  'Possiamo anche parlare in italiano',
+  'Possiamo parlare anche in italiano',
   'Si prefieres en Español sin problema',
 ];
-const emojiLanguages = ['🇬🇧','🇮🇹','🇪🇸'];
+const emojiLanguages = [{flag:'🇬🇧', name:'English'},{flag:'🇮🇹', name:'Italian'},{flag:'🇪🇸', name:'Spanish'}];
 
 const Languages = () => {
   const [selected, setSelected] = useState(0)
@@ -21,8 +21,8 @@ const Languages = () => {
       <h1 className="others_title">Let's have a chat!</h1>
       <div className="languages_buttons">
         {emojiLanguages.map((lang, i) =>
-          <a key={lang}  onClick={() => setSelected(i)} className="languages">
-            <span style={{fontSize: i === selected ? "1.9em" : '1.5em'}}>{lang}</span>
+          <a key={lang.name} data-alt={lang.name} onClick={() => setSelected(i)} className={"pointer " + (i === selected ? "languages--active" : "languages")}>
+            <span style={{fontSize: i === selected ? "1.9em" : "1.5em"}}>{lang.flag}</span>
           </a>
         )}
       </div>

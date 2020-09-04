@@ -4,25 +4,46 @@
 .about
   height: 100%
   margin: 10px auto 25vh auto
-  max-width: 700px
+  max-width: 1300px
+  padding-left: 100px
   width: 80vw
   display: flex
+  align-items: center
   +themify($themes)
     background: themed('secondary')
   & > div 
-    flex: 1
+    // flex: 1
   @media only screen and (max-width: 768px)
-    margin: 0px auto 10vh auto
+    // margin: 0px auto 10vh auto
+    flex-direction: column
+    padding: 0px
 
 .about_description
-  text-align: center
+  flex: 10
+  margin-right: 30px
+  @media only screen and (max-width: 768px)
+    text-align: center
+    margin-right: 0px
   h1 
-    font-size: 2.5rem
+    font-size: 4.5rem
+    font-family: 'Cormorant Garamond'
+    font-weight: 500
+    margin-bottom: 15px
   p
     font-weight: 400
   @media only screen and (max-width: 768px)
     h1
       font-size: 2em
+
+.about_image
+  flex: 7
+  .image_container
+    perspective: 3000px
+    padding: 12%
+    transition: all .5s ease
+    > div
+      +themify($themes)
+        background: darken(themed('secondary'),5%)
 
 .about_quote
   display: inline-block

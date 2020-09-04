@@ -21,9 +21,9 @@
 
 .revealText,
 .revealText::after
-	animation-delay: 1.4s
+	animation-delay: .8s
 	animation-iteration-count: 1
-	animation-duration: 1.5s
+	animation-duration: 1s
 	animation-fill-mode: both
 	animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1) 
 
@@ -60,9 +60,20 @@
     opacity: 1
     transform: translate3d(0, 0, 0)
 
+.fadeIn
+  animation-name: fadeIn
+  animation-duration: 2s
+  animation-iteration-count: 1
+
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
 .slideInLeft
   animation-name: slideInLeft
-  animation-duration: 2s
+  animation-duration: 1s
   animation-iteration-count: 1
 
 @keyframes slideInLeft 
@@ -71,3 +82,61 @@
     visibility: visible
   to 
     transform: translate3d(0, 0, 0)
+
+
+.revealImage
+	position: relative
+	overflow: hidden
+	+themify($themes)
+      box-shadow: themed('box-shadow')
+	
+	&:after
+		content: ''
+		position: absolute
+		top: 0
+		right: 0
+		height: 100%
+		z-index: 10
+		animation: revealLeft 1.8s ease
+		+themify($themes)
+      background: themed('primary')
+	img
+		width: 100%
+		opacity: 0
+		transform-origin: center
+		animation: showImage 1s 1s forwards
+		
+.revealImage,
+.revealImage:after
+	animation-iteration-count: 1
+	animation-fill-mode: both
+	animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1) 
+
+@keyframes revealLeft
+  0% 
+    width: 0
+    left: 0
+  50% 
+    width: 100%
+    left: 0
+  100% 
+    width: 0
+    left: 100%
+
+@keyframes showImage
+	0%
+		opacity: 0
+		transform: scale(1.3)
+	100%
+		opacity: 1
+		transform: scale(1.05)
+
+.hidenImage
+	opacity: 0
+	transition: all 1s ease
+	overflow: hidden
+
+	img
+		transform: scale(1.05)
+		width: 100%
+		transition: all 1s ease

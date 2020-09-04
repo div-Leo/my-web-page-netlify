@@ -5,10 +5,10 @@ import { document } from 'browser-monads';
 
 import emoji from '../../components/utils/emoji'
 
-const Header = ({ siteTitle, page }) => {  
+function Header ({ siteTitle, page }) {  
   return (
     <>
-      <ScrollPercenteage/>
+      <ScrollPercentage/>
       <div className="nav" >
         <div className="nav_logo">div.Leo</div>
         <div className="nav_title">{siteTitle}</div>
@@ -23,13 +23,13 @@ const Header = ({ siteTitle, page }) => {
   )
 }
 
-const ScrollBtn = () => {
+function ScrollBtn () {
   const [scrollTop, setScrollTop] = useState(0);
   let d = document.documentElement
 
-  const scrollDonw = () => {
+  function scrollDown () {
     window.scroll({
-      top: d.clientHeight-250,
+      top: d.clientHeight-150,
       behavior: 'smooth'
     });
   }
@@ -39,13 +39,13 @@ const ScrollBtn = () => {
   },[])
   
   return (
-    <a className="mouse_container" onClick={scrollDonw} style={{opacity: scrollTop ? 0 : 1, pointerEvents: scrollTop ? 'none' : 'auto'}}>
+    <a className="mouse_container pointer" data-alt="scroll" onClick={scrollDown} style={{opacity: scrollTop ? 0 : 1, pointerEvents: scrollTop ? 'none' : 'auto'}}>
       <div className='mouse'></div> 
     </a>
   )
 }
 
-const ScrollPercenteage = () => {
+function ScrollPercentage () {
   const [scroll, setScroll] = useState(0);
   let d = document.documentElement
   

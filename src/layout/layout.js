@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import Header from "./header/index"
 import Footer from "./footer/index"
 import DotCursor from "../components/dotCursor"
+import BrokenPixel from "../components/brokenPixel"
 import Transition from "../components/utils/transition"
 
 const Layout = ({ children, location, ...props }) => {
@@ -20,6 +21,7 @@ const Layout = ({ children, location, ...props }) => {
             <main>{children}</main>
         </Transition>
       <Footer />
+      <BrokenPixel/>
       <DotCursor location={location}/>
     </div>
   )

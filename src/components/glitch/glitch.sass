@@ -2,6 +2,61 @@
   height: 100vh
   display: flex
   align-items: center
+  position: relative
+  z-index: 1
+
+.glitch_background
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 35vw
+  height: 40vh
+  overflow: hidden
+  border-radius: 3px
+  filter: contrast(100%)
+  +themify($themes)
+    background: radial-gradient(ellipse at center, themed('secondary') 30%, darken(themed('secondary'),50%) 90%)
+    box-shadow: themed('box-shadow')
+  @media only screen and (max-width: 768px)
+    width: 65vw
+    height: 40vh
+
+.glitch_noise
+  position: absolute
+  top: -500%
+  right: -500%
+  bottom: -500%
+  left: -500%
+  +themify($themes)
+    background: #333 url(../images/noise.png) 0 0
+  background-size: content
+  opacity: .35
+  animation: noise 1s steps(8,end) infinite both
+
+@keyframes noise
+  0%
+    transform: translateX(0%,0%)
+  10%
+    transform: translate(-10%, 10%)
+  20%
+    transform: translate(15%, -10%)
+  30%
+    transform: translate(-10%,10%)
+  40%
+    transform: translate(10%, -15%)
+  50%
+    transform: translate(-10%, 20%)
+  60%
+    transform: translate(-20%, -10%)
+  70%
+    transform: translateY(50%, 10%)
+  80%
+    transform: translate(10%, -15%)
+  90%
+    transform: translate(0%, 20%)
+  100%
+    transform: translate(-10%, 10%)
 
 .glitch
   font-size: 4rem

@@ -4,7 +4,7 @@ const emojiList = ['🥞','☕','💻','🍕','🍻','🍝','🍷','🍾','🎉'
 
 const Likes = () => (
   <div>
-    <h1 className="others_title">Interests</h1>
+    <h1 className="likes_title">Interests</h1>
     <div className="likes_container"> 
       <div className="likes_slider"> 
         <div className="likes"> 

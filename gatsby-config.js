@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `div.Leo`,
-    description: `Portfolio of Front-End Creative Developer`,
+    description: `Portfolio of a Front-End Creative Developer`,
     author: `@div.leo`,
   },
   plugins: [
@@ -30,8 +30,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
-        display: `minimal-ui`,
-        icon: `src/images/dot.png`, // This path is relative to the root of the site.
+        display: `minimal-ui`
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

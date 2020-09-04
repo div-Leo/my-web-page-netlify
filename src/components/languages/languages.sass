@@ -9,26 +9,27 @@
   align-items: center
 	
 .languages
-  width: 60px
-  height: 60px
+  width: 70px
+  height: 70px
   padding: 10px 15px
   margin: 20px
-  border-radius: 3px
+  border-radius: 50%
   display: flex
   flex-direction: column
   justify-content: center
   align-items: center
-  +themify($themes)
-    background: themed('secondary')
-    box-shadow: themed('box-shadow')
+  transition: ease all .5s
 
-  @media only screen and (max-width: 768px)
-    width: 73px
-    margin: 20px
-    font-size: 0.9rem
+  &--active
+    @extend .languages
+    // border-bottom: 4px solid 
+    +themify($themes)
+      // border-bottom-color: themed('primary')
+      background: themed('secondary')
+      box-shadow: themed('box-shadow')
 
   span
-    transition: all ease .2s
+    transition: all ease .3s
     font-weight: 700
     font-size: 1.5rem
 

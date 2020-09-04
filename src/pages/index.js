@@ -7,7 +7,7 @@ import Skills from "../components/skills";
 import Languages from '../components/languages';
 import Form from '../components/form';
 
-import '../styles/index.sass'
+import '../styles/index.sass';
 
 const IndexPage = () => {
   return (

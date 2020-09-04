@@ -32,9 +32,9 @@ const Form = () => {
   const onSuccess = (res) => { 
     setState(initialState);
     setStatus('success');
-    setTimeout(() => {
-      setStatus('');
-    }, 2500);
+    // setTimeout(() => {
+    //   setStatus('');
+    // }, 2500);
   }
 
   const onError = (err) => {
@@ -50,24 +50,26 @@ const Form = () => {
 
   return (
     <div className="form_container" >
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="reply_to" onChange={handleChange} placeholder="Your Email" /> 
-        <input style={{border: state.subject === 'error' ? '3px solid #d44' : 'none' }} type="text" onChange={handleChange} name="subject" placeholder="Subject" />
-        <textarea style={{border: state.text === 'error' ? '3px solid #d44' : 'none' }} name="text" onChange={handleChange} placeholder="Message"></textarea>
-        <div className="form_submit">
-          <a>
-            <button type="submit" disabled={status === 'pending'} >
-              {status === 'pending' ? <Spinner/> : 'Send'}
-            </button>
-          </a>
-        </div>
-      </form>
-      <div className="from_modal" style={{display: status === 'success' ? '' : 'none' }}  >
-        <div className="modal_box">
-          Thanks for contacting me! <span>🙏</span> I will get back to you ASAP
-          <p className="email_credits">Powered by <a href="https://postmail.invotes.com" target="_blank">PostMail</a></p>
-        </div>
-      </div>
+      { 
+        status !== 'success' ? 
+          <form onSubmit={handleSubmit}>
+            <input className="pointer" type="text" name="reply_to" onChange={handleChange} placeholder="Your Email" /> 
+            <input className="pointer" style={{border: state.subject === 'error' ? '3px solid #d44' : 'none' }} type="text" onChange={handleChange} name="subject" placeholder="Subject" />
+            <textarea className="pointer" style={{border: state.text === 'error' ? '3px solid #d44' : 'none' }} name="text" onChange={handleChange} placeholder="Message"></textarea>
+            <div className="form_submit">
+              <a className="pointer">
+                <button type="submit" disabled={status === 'pending'} >
+                  {status === 'pending' ? <Spinner/> : 'send'}
+                </button>
+              </a>
+            </div>
+          </form>
+        :
+          <div className="modal_box">
+            Thanks for contacting me! 🙏
+            <p className="email_credits">Powered by <a className="pointer" href="https://postmail.invotes.com" target="_blank">PostMail</a></p>
+          </div>
+      }
     </div>
 )}
 
