@@ -30,7 +30,8 @@ module.exports = {
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
-        display: `minimal-ui`
+        display: `minimal-ui`,
+        icon: `src/images/dot.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

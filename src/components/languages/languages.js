@@ -1,34 +1,42 @@
-import React, { useState, useEffect, useRef } from "react";
-import useRandomText from "../utils/randomText";
+import React, { useState, useEffect } from "react";
+import Revealer from "../utils/revealer"
+
+import english from "../../images/english.gif";
+import italian from "../../images/italian.gif";
+import spanish from "../../images/spanish.gif";
 
 const languages = [
-  'We can speak in English if you want',
-  'Possiamo parlare anche in italiano',
-  'Si prefieres en Español sin problema',
+  {flag:'🇮🇹', gif:italian},
+  {flag:'🇬🇧', gif:english},
+  {flag:'🇪🇸', gif:spanish}
 ];
-const emojiLanguages = [{flag:'🇬🇧', name:'English'},{flag:'🇮🇹', name:'Italian'},{flag:'🇪🇸', name:'Spanish'}];
 
 const Languages = () => {
   const [selected, setSelected] = useState(0)
-  const [text, setText] = useState(0)
-  const ref = useRef(null)
 
   useEffect(() => {
-    useRandomText(ref, languages[selected])
-  }, [selected])
+    const intId = setInterval(() => {
+      setSelected(selected =>
+        selected < languages.length - 1
+          ? selected+1
+          : 0
+      )
+    }, 4000);
+    return () => clearInterval(intId);
+  }, [])
+
   return (
     <div className="languages_container">
-      <h1 className="others_title">Let's have a chat!</h1>
-      <div className="languages_buttons">
-        {emojiLanguages.map((lang, i) =>
-          <a key={lang.name} data-alt={lang.name} onClick={() => setSelected(i)} className={"pointer " + (i === selected ? "languages--active" : "languages")}>
-            <span style={{fontSize: i === selected ? "1.9em" : "1.5em"}}>{lang.flag}</span>
-          </a>
-        )}
-      </div>
-      <div className="languages_caption" ref={ref}>
-          {text}
-      </div>
+      <Revealer revealIn="fadeInUp" revealOut="fadeOut">
+        <div className="languages_gif">
+          <div className="gif_container">
+            <div className="languages_image"></div>
+            <div className="languages_icon">
+              <span>{languages[selected].flag}</span>
+            </div>
+          </div>
+        </div>
+      </Revealer>
     </div>
 )}
 

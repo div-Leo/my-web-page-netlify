@@ -1,0 +1,45 @@
+.languages_container
+  display: flex
+  align-items: center
+  flex-direction: column
+  margin-top: 50px
+
+.languages_buttons
+  display: flex
+  align-items: center
+	
+.languages
+  width: 70px
+  height: 70px
+  padding: 10px 15px
+  margin: 20px
+  border-radius: 50%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  transition: ease all .5s
+
+  &--active
+    @extend .languages
+    // border-bottom: 4px solid 
+    +themify($themes)
+      // border-bottom-color: themed('primary')
+      background: themed('secondary')
+      box-shadow: themed('box-shadow')
+
+  span
+    transition: all ease .3s
+    font-weight: 700
+    font-size: 1.5rem
+
+.languages_caption
+  font-weight: 300
+  font-size: 1.2rem
+  font-family: monospace
+  margin: 50px
+  text-align: center
+  height: 50px
+
+  @media only screen and (max-width: 768px)
+    width: 100vw

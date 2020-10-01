@@ -4,8 +4,7 @@ import SEO from "../components/utils/seo";
 import Glitch from "../components/glitch";
 import About from "../components/about";
 import Skills from "../components/skills";
-import Languages from '../components/languages';
-import Form from '../components/form';
+import Contacts from '../components/contacts';
 
 import '../styles/index.sass';
 
@@ -16,8 +15,7 @@ const IndexPage = () => {
       <Glitch/>
       <About/>
       <Skills/>
-      <Languages/>
-      <Form/>
+      <Contacts/>
     </>
   )
 }

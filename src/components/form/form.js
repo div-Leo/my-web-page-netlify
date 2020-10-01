@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Revealer from "../utils/revealer";
+
 
 import { sendEmail } from "../utils/sendEmail";
 import Spinner from "../spinner";
 
 const initialState = {
+  reply_to: '',
   subject: '',
   text: '',
-  reply_to: '',
 }
+
+
 
 const Form = () => {
   const [state, setState] = useState(initialState)
   const [status, setStatus] = useState('')
+  
 
   const handleChange = ({ target }) => {
     setState(state => ({
@@ -32,9 +37,9 @@ const Form = () => {
   const onSuccess = (res) => { 
     setState(initialState);
     setStatus('success');
-    // setTimeout(() => {
-    //   setStatus('');
-    // }, 2500);
+    setTimeout(() => {
+      setStatus('');
+    }, 3000);
   }
 
   const onError = (err) => {
@@ -50,25 +55,47 @@ const Form = () => {
 
   return (
     <div className="form_container" >
-      { 
-        status !== 'success' ? 
-          <form onSubmit={handleSubmit}>
-            <input className="pointer" type="text" name="reply_to" onChange={handleChange} placeholder="Your Email" /> 
-            <input className="pointer" style={{border: state.subject === 'error' ? '3px solid #d44' : 'none' }} type="text" onChange={handleChange} name="subject" placeholder="Subject" />
-            <textarea className="pointer" style={{border: state.text === 'error' ? '3px solid #d44' : 'none' }} name="text" onChange={handleChange} placeholder="Message"></textarea>
-            <div className="form_submit">
-              <a className="pointer">
-                <button type="submit" disabled={status === 'pending'} >
-                  {status === 'pending' ? <Spinner/> : 'send'}
-                </button>
-              </a>
-            </div>
-          </form>
-        :
-          <div className="modal_box">
-            Thanks for contacting me! 🙏
-            <p className="email_credits">Powered by <a className="pointer" href="https://postmail.invotes.com" target="_blank">PostMail</a></p>
+      <Revealer revealIn="fadeInUp" revealOut="fadeOut">
+        <form onSubmit={handleSubmit}>
+          
+          <input 
+            className={`pointer ${state.reply_to === "error" ? "form_input--error" : "form_input"}`} 
+            value={state.reply_to !== "error" ? state.reply_to : ''} 
+            type="text" 
+            name="reply_to" 
+            onChange={handleChange} 
+            placeholder="Your Email" /> 
+          <input 
+            className={`pointer ${state.subject === "error" ? "form_input--error" : "form_input"}`} 
+            value={state.subject  !== "error" ? state.subject : ''} 
+            type="text" 
+            onChange={handleChange} 
+            name="subject" 
+            placeholder="Subject*" />
+          <textarea 
+            className={`pointer ${state.text === "error" ? "form_input--error" : "form_input"}`} 
+            value={state.text  !== "error" ? state.text : ''} 
+            name="text" 
+            onChange={handleChange} 
+            placeholder="Message*"></textarea>
+          <div className="form_submit">
+            <a className="pointer">
+              <button type="submit" disabled={status === 'pending'} >
+                {status === 'pending' ? <Spinner/> : 'send'}
+              </button>
+            </a>
           </div>
+        </form>
+      </Revealer>
+      { 
+        status === 'success' ? 
+        <div className="modal">
+          <div className={`modal_box modal_box--${status}`}>
+            Thanks for contacting me! 🙏
+            <p className="email_credits">Powered by <a className="pointer" href="https://postmail.invotes.com" target="_blank"> {" "} PostMail</a></p>
+          </div>
+        </div>
+        : null
       }
     </div>
 )}

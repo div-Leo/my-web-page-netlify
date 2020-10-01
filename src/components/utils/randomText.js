@@ -1,4 +1,4 @@
-const letters = "abcdefghijklmnopqrstuvwxyz"; //!@#$%^&* // ABCDFGHIJKLMNOPQRSTUVWXYZ
+const letters = "abcdefghijklmnopqrstuvwxyz             "; //!@#$%^&* // ABCDFGHIJKLMNOPQRSTUVWXYZ
 const speed = 20;
 const increment = 2;
 

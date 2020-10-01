@@ -14,7 +14,7 @@
   & > div 
     // flex: 1
   @media only screen and (max-width: 768px)
-    // margin: 0px auto 10vh auto
+    margin: 0px auto 10vh auto
     flex-direction: column
     padding: 0px
 
@@ -36,10 +36,12 @@
       font-size: 2em
 
 .about_image
-  flex: 7
+  flex: 9
+  +themify($themes)
+    background: darken(themed('secondary'), 3%)
   .image_container
     perspective: 3000px
-    padding: 12%
+    padding: 13%
     transition: all .5s ease
     > div
       +themify($themes)

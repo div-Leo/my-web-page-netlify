@@ -33,8 +33,8 @@ const About = () => {
         <div className="about_image">
           <div className="image_container" ref={ref}>
             <Revealer revealIn="revealImage" revealOut="hidenImage">
-              <div style={{transition: 'all .3s ease', perspective: '3000px', transform: perspective}}>
-                <img src={profile} alt=""/>
+              <div style={{transition: 'all .3s ease',  transform: perspective}}>
+                <img src={profile} alt="Profile image"/>
               </div>
             </Revealer>
           </div>

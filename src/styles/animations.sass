@@ -47,6 +47,24 @@
   opacity: 0
   transition: 1s opacity
 
+.fadeInOut
+	animation-name: fadeInOut
+	animation-duration: 3s
+	animation-iteration-count: 1
+  
+
+@keyframes fadeInOut
+  from
+    opacity: 0
+    transform: translate3d(0, 70px, 0)
+  20%,
+  80%
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+  to
+    opacity: 0
+    transform: translate3d(0, 70px, 0)
+
 .fadeInUp
   animation-name: fadeInUp
   animation-duration: 1s
@@ -82,7 +100,6 @@
     visibility: visible
   to 
     transform: translate3d(0, 0, 0)
-
 
 .revealImage
 	position: relative

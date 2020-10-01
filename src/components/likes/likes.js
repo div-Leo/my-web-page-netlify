@@ -1,17 +1,22 @@
 import React from 'react';
+import Revealer from '../utils/revealer';
 
 const emojiList = ['🥞','☕','💻','🍕','🍻','🍝','🍷','🍾','🎉','🥑','🍣','⚽️','🚲','🎧','✏️','🍵','📷','✈️','☀️','🍍','📱'];
 
 const Likes = () => (
   <div>
-    <h1 className="likes_title">Interests</h1>
+    <Revealer revealIn="fadeIn" revealOut="fadeOut"> 
+      <h1 className="likes_title">Interests</h1>
+    </Revealer>
     <div className="likes_container"> 
-      <div className="likes_slider"> 
-        <div className="likes"> 
-          <LikesList/>
-          <LikesList/>
+      <Revealer revealIn="fadeIn" revealOut="fadeOut"> 
+        <div className="likes_slider"> 
+          <div className="likes"> 
+            <LikesList/>
+            <LikesList/>
+          </div> 
         </div> 
-      </div> 
+      </Revealer>
     </div> 
   </div>
 )

@@ -6,7 +6,7 @@ function Revealer ({children, revealIn, revealOut}) {
   const scrollState = useScrollState(ref);
 
   let animate = revealIn;
-  if (scrollState.isFullyInViewport){
+  if (scrollState.isInViewport){
     animate = revealIn;
   } else if (scrollState.isBelowViewport) {
     animate = revealOut;

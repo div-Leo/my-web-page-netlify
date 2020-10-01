@@ -1,4 +1,4 @@
-$themes: ( light: ( primary: $light-text, secondary: $light-background, box-shadow: $light-box-shadow ), dark: ( primary: $dark-text, secondary: $dark-background, box-shadow: $dark-box-shadow));
+$themes: ( light: ( primary: $light-text, secondary: $light-background, box-shadow: $light-box-shadow, box-shadow-dark: $dark-box-shadow ), dark: ( primary: $dark-text, secondary: $dark-background, box-shadow: $dark-box-shadow, box-shadow-dark: $darken-box-shadow));
 
 =themify($themes) // $themes var
   @each $theme, $props in $themes // for each $theme = dark - $props = ( primary: ... secondary: ...)
