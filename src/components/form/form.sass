@@ -27,15 +27,19 @@
     transition: all .3s
     background: transparent
     resize: none
+    border-bottom: 2px solid
+    border-radius: none !important
+    transition: .5s ease
     +themify($themes)
-      // background: darken(themed('secondary'), 1%)
-      border-bottom: 2px solid
       color: themed('primary')
     &.form_input
       +themify($themes)
-        border-color: themed('primary')
+        border-color:  themed('primary')
     &.form_input--error
       border-color: #D44
+    &:focus
+      +themify($themes)
+        background: darken(themed('secondary'), 5%)
   input
     height: 55px
 

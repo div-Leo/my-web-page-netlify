@@ -206,7 +206,11 @@ $size: 12px
   to
     transform: translate(-50%, -50%) rotate(360deg)
 
-@media only screen and (max-width: 768px)
+@media only screen and (max-width: 768px), (pointer:coarse) 
   .dot_cursor,
   .outline_cursor
     display: none
+
+
+// TODO: media query (min-width: 768px) and (orientatin: portrait) 
+// change to each container to 50vh/70vh

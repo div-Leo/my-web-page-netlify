@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Revealer from "../utils/revealer";
-
+import useRandomText from "../utils/randomText";
 
 import { sendEmail } from "../utils/sendEmail";
 import Spinner from "../spinner";
@@ -11,12 +11,32 @@ const initialState = {
   text: '',
 }
 
-
+const languages = [
+  'We can speak in English if you want',
+  'Possiamo parlare anche in italiano',
+  'Si prefieres en Español sin problema',
+];
 
 const Form = () => {
   const [state, setState] = useState(initialState)
   const [status, setStatus] = useState('')
-  
+  const [selected, setSelected] = useState(0)
+  const ref = useRef(null)
+
+  // useEffect(() => {
+  //   useRandomText(ref, languages[selected])
+  // }, [selected])
+
+  useEffect(() => {
+    const intId = setInterval(() => {
+      setSelected(selected =>
+        selected < languages.length - 1
+          ? selected+1
+          : 0
+      )
+    }, 4000);
+    return () => clearInterval(intId);
+  }, [])
 
   const handleChange = ({ target }) => {
     setState(state => ({
@@ -57,7 +77,7 @@ const Form = () => {
     <div className="form_container" >
       <Revealer revealIn="fadeInUp" revealOut="fadeOut">
         <form onSubmit={handleSubmit}>
-          
+          {/* <div className="form_languages" ref={ref}/> */}
           <input 
             className={`pointer ${state.reply_to === "error" ? "form_input--error" : "form_input"}`} 
             value={state.reply_to !== "error" ? state.reply_to : ''} 

@@ -24,7 +24,7 @@ function Header ({ siteTitle, page }) {
 }
 
 function ScrollBtn () {
-  const [scrollTop, setScrollTop] = useState(0);
+  const [scrollTop, setScrollTop] = useState(false);
   let d = document.documentElement
 
   function scrollDown () {
@@ -33,9 +33,15 @@ function ScrollBtn () {
       behavior: 'smooth'
     });
   }
-  
+
+  function toggleScrollIcon () {
+    if (d.scrollTop < 100 && scrollTop) setScrollTop(false)
+    else if (d.scrollTop > 100 && !scrollTop) setScrollTop(true)
+  }
+   
   useEffect(() => { 
-    window.addEventListener('scroll', () => d.scrollTop < 100 && setScrollTop((d.scrollTop))) 
+    window.addEventListener('scroll', toggleScrollIcon) 
+    return () => window.removeEventListener('scroll', toggleScrollIcon);
   },[])
   
   return (
