@@ -1,3 +1,7 @@
+$italian: url(../images/italian.gif)
+$english: url(../images/english.gif)
+$spanish: url(../images/spanish.gif)
+
 .languages_container
   display: flex
   align-items: center
@@ -17,6 +21,12 @@
     width: 80vw
     height: 50vh
     margin: 5vh auto 10vh auto
+  @media only screen and (min-width: 1000px) and (orientation: portrait)
+    width: 35vw
+    height: 35vh
+    margin: 5vh -50%
+
+
 
 .languages_image
   width: 100%
@@ -27,6 +37,7 @@
   animation: aimateGif 12s infinite
   position: relative
   overflow: hidden
+  transition: ease all .5s
   +themify($themes)
     box-shadow: themed('box-shadow')
 
@@ -92,21 +103,28 @@
 @-webkit-keyframes aimateGif
   0%,
   32%
-    background-image: url(../images/italian.gif)
+    background-image: $italian
+    -webkit-background-image: $italian
+    -moz-background-image: $italian
   33%,
   65% 
-    background-image: url(../images/english.gif)
+    background-image: $english
+    -webkit-background-image: $english
+    -moz-background-image: $english
   66%,
   100%
-    background-image: url(../images/spanish.gif)
+    background-image: $spanish
+    -webkit-background-image: $spanish
+    -moz-background-image: $spanish
   
 @keyframes revealGifLeft
-  70% 
+  65% 
     width: 0
     left: 0
-  85% 
+  75%, 
+  80% 
     width: 100%
     left: 0
-  95% 
+  90% 
     width: 0
     left: 100%

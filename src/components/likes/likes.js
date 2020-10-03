@@ -9,14 +9,14 @@ const Likes = () => (
       <h1 className="likes_title">Interests</h1>
     </Revealer>
     <div className="likes_container"> 
-      {/* <Revealer revealIn="fadeIn" revealOut="fadeOut">  */}
+      <Revealer revealIn="fadeIn" revealOut="fadeOut"> 
         <div className="likes_slider"> 
           <div className="likes"> 
             <LikesList/>
             <LikesList/>
           </div> 
         </div> 
-      {/* </Revealer> */}
+      </Revealer>
     </div> 
   </div>
 )

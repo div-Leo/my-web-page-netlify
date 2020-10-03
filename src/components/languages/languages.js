@@ -31,12 +31,33 @@ const Languages = () => {
         <div className="languages_gif">
           <div className="gif_container">
             <div className="languages_image"></div>
+            {/* <div className="languages_image" style={{backgroundImage:`url(${languages[selected].gif})`}}></div> */}
+            {/* <Gif gif={languages[selected].gif} /> */}
             <div className="languages_icon">
               <span>{languages[selected].flag}</span>
             </div>
           </div>
         </div>
       </Revealer>
+    </div>
+)}
+
+const Gif = ({gif}) => {
+  const [animation, setAnimation] = useState('revealGifLeft')
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimation('revealGifLeft')
+    }, 0);
+    return () => {
+      setAnimation('')
+    }
+  },[gif])
+
+  return (
+    <div 
+      className={`languages_image ${animation} `}
+      style={{backgroundImage:`url(${gif})`}}>
     </div>
 )}
 

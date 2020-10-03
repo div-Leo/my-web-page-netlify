@@ -5,6 +5,8 @@
   position: relative
   z-index: 1
   overflow: hidden
+  @media only screen and (min-width: 1000px) and (orientation: portrait)
+    height: 50vh
 
 .glitch_background
   position: absolute
@@ -13,9 +15,12 @@
   transform: translate(-50%, -50%)
   width: 35vw
   height: 40vh
+  @media only screen and (min-width: 1000px) and (orientation: portrait)
+    height: 25vh
   overflow: hidden
   border-radius: 3px
   filter: contrast(100%)
+  transition: .6s height ease, .6s width ease
   +themify($themes)
     background: radial-gradient(ellipse at center, themed('secondary') 30%, darken(themed('secondary'),50%) 90%)
     box-shadow: themed('box-shadow')
