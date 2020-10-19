@@ -46,14 +46,14 @@
 .likes
   animation: slider-horizontal 25s infinite linear
   display: flex
-  width: calc(75px * 42)
+  width: calc(75px * 44)
   transition: .5s all
   span
     width: 25px
     margin: 0 25px
 
 @keyframes slider-horizontal
-  $steps: 22
+  $steps: 22  
   @for $i from 0 through $steps
     #{percentage($i*(1/$steps))}
       transform: translateX(calc(#{-75px * $i}))

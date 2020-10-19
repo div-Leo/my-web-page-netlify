@@ -13,9 +13,9 @@ $spanish: url(../images/spanish.gif)
 
 .gif_container
   position: relative
-  margin: 10vh -50%
-  width: 25vw
-  height: 60vh
+  margin: 8vh -50%
+  width: 22vw
+  height: 55vh
   min-width: 300px
   @media only screen and (max-width: 768px)
     width: 80vw
@@ -25,8 +25,6 @@ $spanish: url(../images/spanish.gif)
     width: 35vw
     height: 35vh
     margin: 5vh -50%
-
-
 
 .languages_image
   width: 100%
@@ -84,10 +82,37 @@ $spanish: url(../images/spanish.gif)
     transform: translate(50%,50%)
     right: 50%
 
-  span
+  &:after
     transition: all ease .3s
     font-weight: 700
     font-size: 3.5rem
+    content: '🇮🇹'
+    animation: aimateEmoji 12s infinite
+    animation-delay: .2s
+
+@-webkit-keyframes aimateEmoji
+  0%,
+  32%
+    content: '🇮🇹'
+  33%,
+  65%
+    content: '🇬🇧'
+  66%,
+  100%
+    content: '🇪🇸'
+  0%,
+  30%,
+  33%,
+  63%,
+  66%,
+  98%
+    transform: scale(1)
+    opacity: 1
+  32%,
+  65%,
+  100%
+    transform: scale(0.2)
+    opacity: 0
 
 .languages_caption
   font-weight: 300

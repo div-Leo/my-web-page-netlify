@@ -1,3 +1,5 @@
+// OPTION 1 +++++++++++++++++++++++++++++++
+
 $size: 11px
 
 .dot_cursor,
@@ -56,6 +58,9 @@ $size: 11px
   .dot_cursor,
   .outline_cursor
     display: none
+
+
+// OPTION 2 +++++++++++++++++++++++++++++++
 
 // $size: 12px
 
@@ -144,69 +149,70 @@ $size: 11px
 //   .outline_cursor
 //     display: none
 
+// OPTION 3 +++++++++++++++++++++++++++++++
 
-$size: 12px
+// $size: 12px
 
-.outline_cursor,
-.dot_cursor
-  position: fixed
-  pointer-events: none
-  transform-origin: center
-  border-radius: 50%
+// .outline_cursor,
+// .dot_cursor
+//   position: fixed
+//   pointer-events: none
+//   transform-origin: center
+//   border-radius: 50%
 
-.dot_cursor
-  width: $size
-  height: $size
-  z-index: 11
-  transform: translate(-50%, -50%)
-  transition: opacity .3s ease-in-out, transform .3s ease-in-out
-  +themify($themes)
-    background: themed('primary')
-  &--hover
-    @extend .dot_cursor
-    transform: scale(4)
-    opacity: .2
+// .dot_cursor
+//   width: $size
+//   height: $size
+//   z-index: 11
+//   transform: translate(-50%, -50%)
+//   transition: opacity .3s ease-in-out, transform .3s ease-in-out
+//   +themify($themes)
+//     background: themed('primary')
+//   &--hover
+//     @extend .dot_cursor
+//     transform: scale(4)
+//     opacity: .2
 
-.outline_cursor
-  width: $size * 2
-  height: $size * 2
-  z-index: 10
-  transform: translate(-50%, -50%)
-  animation: surround 2s infinite linear
-  // div
-  //   width: $size * .3
-  //   height: $size * .3
-  //   border-radius: 50%
-  //   position: relative
-  //   +themify($themes)
-  //     background: themed('primary')
+// .outline_cursor
+//   width: $size * 2
+//   height: $size * 2
+//   z-index: 10
+//   transform: translate(-50%, -50%)
+//   // animation: surround 2s infinite linear
+//   // div
+//   //   width: $size * .3
+//   //   height: $size * .3
+//   //   border-radius: 50%
+//   //   position: relative
+//   //   +themify($themes)
+//   //     background: themed('primary')
 
-.outline_cursor
-  &--hidden
-    opacity: 0
-  &--hover
-    @extend .outline_cursor
-    font-size: 1rem
-    font-weight: 500
-    +themify($themes)
-      background: rgba(themed('secondary'), .6)
-    padding: 1px 5px
-    transform: translate(40px, -50%)
-    transform-origin: right
-    border-radius: 3px
-    width: unset
-    height: unset
-    animation: unset
-    div
-      opacity: 0
+// .outline_cursor
+//   &--hidden
+//     opacity: 0
+//   &--hover
+//     @extend .outline_cursor
+//     font-size: 1rem
+//     font-weight: 500
+//     +themify($themes)
+//       background: rgba(themed('secondary'), .6)
+//     padding: 1px 5px
+//     transform: translate(40px, -50%)
+//     transform-origin: right
+//     border-radius: 3px
+//     width: unset
+//     height: unset
+//     animation: unset
+//     div
+//       opacity: 0
 
-@keyframes surround 
-  from
-    transform: translate(-50%, -50%) rotate(0deg)
-  to
-    transform: translate(-50%, -50%) rotate(360deg)
+// // @keyframes surround 
+// //   from
+// //     transform: translate(-50%, -50%) rotate(0deg)
+// //   to
+// //     transform: translate(-50%, -50%) rotate(360deg)
 
-@media only screen and (max-width: 768px), (pointer:coarse) 
-  .dot_cursor,
-  .outline_cursor
-    display: none
+// @media only screen and (max-width: 768px), (pointer:coarse) 
+//   .dot_cursor,
+//   .outline_cursor
+//     display: none
