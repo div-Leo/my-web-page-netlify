@@ -11,7 +11,7 @@ function Header ({ siteTitle, page }) {
       <ScrollPercentage/>
       <div className="nav" >
         <div className="nav_logo">div.Leo</div>
-        <div className="nav_title">{siteTitle}</div>
+        <div className="nav_title">This is me</div>
         <div className="nav_note"> 
           <div className="note_text">
             today I'm feeling 

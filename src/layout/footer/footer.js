@@ -22,7 +22,11 @@ const Footer = () => (
     <div className="footer_socials">
       {renderSocials()}
     </div>
-    <div className="footer_rights">© {new Date().getFullYear()} - Milano, all right reserved Leonardo Di Vittorio.</div>
+    <div className="footer_rights">
+      <p>
+        © {new Date().getFullYear()} - Milano, all right reserved Leonardo Di Vittorio.
+      </p> 
+    </div>
   </div>
 )
 
