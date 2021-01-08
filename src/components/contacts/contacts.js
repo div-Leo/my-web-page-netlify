@@ -6,7 +6,7 @@ const Contacts = () => {
 
   return (
     <div className="contacts">
-      <h1 className="contacts_title">How can we talk?</h1>
+      <h1 className="contacts_title">Wanna talk? Say Hi 👋</h1>
       <div className="contacts_container">
         <Languages/>
         <Form/>
