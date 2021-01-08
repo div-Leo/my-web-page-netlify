@@ -1,63 +1,63 @@
 // OPTION 1 +++++++++++++++++++++++++++++++
 
-$size: 11px
+// $size: 11px
 
-.dot_cursor,
-.outline_cursor
-  pointer-events: none
-  position: fixed
-  z-index: 10
-  top: 50%
-  left: 50%
-  border-radius: 50%
-  transform: translate(-50%, -50%)
-  transform-origin: center
-  transition: opacity .3s ease-in-out, transform .3s ease-in-out
-  opacity: 1
-  &--hidden
-    opacity: 0
+// .dot_cursor,
+// .outline_cursor
+//   pointer-events: none
+//   position: fixed
+//   z-index: 10
+//   top: 50%
+//   left: 50%
+//   border-radius: 50%
+//   transform: translate(-50%, -50%)
+//   transform-origin: center
+//   transition: opacity .3s ease-in-out, transform .3s ease-in-out
+//   opacity: 1
+//   &--hidden
+//     opacity: 0
 
-.dot_cursor
-  width: $size
-  height: $size
-  +themify($themes)
-    background: themed('primary')
-  &--hover
-    @extend .dot_cursor
-    transform: scale(4)
-    opacity: .2
-
-
-.outline_cursor
-  width: $size
-  height: $size
-  opacity: .2
-  +themify($themes)
-    background: themed('primary')
-  &--hover
-    @extend .outline_cursor
-    +themify($themes)
-      background: rgba(themed('secondary'), .6)
-    opacity: 1
-    font-size: 1rem
-    font-weight: 500
-    transform: translate(40px, -50%)
-    transform-origin: right
-    border-radius: 2px
-    width: unset
-    height: unset
-
-@keyframes pulse
-  from
-    transform: translate(-50%, -50%) scale(1)
-  to
-    transform: translate(-50%, -50%) scale(2)
+// .dot_cursor
+//   width: $size
+//   height: $size
+//   +themify($themes)
+//     background: themed('primary')
+//   &--hover
+//     @extend .dot_cursor
+//     transform: scale(4)
+//     opacity: .2
 
 
-@media only screen and (max-width: 768px)
-  .dot_cursor,
-  .outline_cursor
-    display: none
+// .outline_cursor
+//   width: $size
+//   height: $size
+//   opacity: .2
+//   +themify($themes)
+//     background: themed('primary')
+//   &--hover
+//     @extend .outline_cursor
+//     +themify($themes)
+//       background: rgba(themed('secondary'), .6)
+//     opacity: 1
+//     font-size: 1rem
+//     font-weight: 500
+//     transform: translate(40px, -50%)
+//     transform-origin: right
+//     border-radius: 2px
+//     width: unset
+//     height: unset
+
+// @keyframes pulse
+//   from
+//     transform: translate(-50%, -50%) scale(1)
+//   to
+//     transform: translate(-50%, -50%) scale(2)
+
+
+// @media only screen and (max-width: 768px)
+//   .dot_cursor,
+//   .outline_cursor
+//     display: none
 
 
 // OPTION 2 +++++++++++++++++++++++++++++++
@@ -216,3 +216,84 @@ $size: 11px
 //   .dot_cursor,
 //   .outline_cursor
 //     display: none
+
+
+
+// OPTION 4 +++++++++++++++++++++++++++++++
+
+
+$size: 4px
+
+.dot_cursor,
+.outline_cursor
+  pointer-events: none
+  position: fixed
+  z-index: 10
+  top: 50%
+  left: 50%
+  border-radius: 50%
+  transform: translate(-50%, -50%)
+  transform-origin: center
+  transition: opacity .3s ease-in-out, transform .3s ease-in-out
+  opacity: 1
+  &--hidden
+    opacity: 0
+
+.dot_cursor
+  width: $size
+  height: $size
+  +themify($themes)
+    background: themed('primary')
+  &--hover
+    @extend .dot_cursor
+    transform: scale(4)
+    opacity: .2
+
+
+.outline_cursor
+  width: 35px
+  height: 35px
+  z-index: 8
+  background-image: radial-gradient(circle farthest-corner at 10% 20%)
+  animation: blobRadius 5s ease-in-out infinite
+  opacity: .7
+  +themify($themes)
+    border: 1.5px solid themed('primary')
+    // background: themed('primary')
+  &--hover
+    @extend .outline_cursor
+    +themify($themes)
+      background: rgba(themed('secondary'), .6)
+    opacity: 1
+    font-size: 1rem
+    font-weight: 500
+    transform: translate(40px, -50%)
+    transform-origin: right
+    border-radius: 2px
+    width: unset
+    height: unset
+
+@keyframes pulse
+  from
+    transform: translate(-50%, -50%) scale(1)
+  to
+    transform: translate(-50%, -50%) scale(2)
+
+
+@media only screen and (max-width: 768px)
+  .dot_cursor,
+  .outline_cursor
+    display: none
+
+@keyframes blobRadius 
+  0%,
+  100% 
+    border-radius: 43% 77% 80% 40% / 40% 40% 80% 80% 
+  20%  
+    border-radius: 47% 73% 61% 59% / 47% 75% 45% 73% 
+  40%  
+    border-radius: 46% 74% 74% 46% / 74% 58% 62% 46% 
+  60%  
+    border-radius: 47% 73% 61% 59% / 40% 40% 80% 80% 
+  80%  
+    border-radius: 50% 70% 52% 68% / 51% 61% 59% 69% 
