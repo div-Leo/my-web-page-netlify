@@ -16,17 +16,18 @@ function BrokenPixel ({ location }) {
     })
   },[location])
 
-  // useEffect(()=> {
-  //   document.addEventListener('click', breakIt());
-  // },[location])
+  useEffect(()=> {
+    document.addEventListener('click', breakPixel(setPixel));
+    // document.addEventListener('click', breakPixels(setPixel));
+  },[location])
 
-  return pixel.map((p,i) => <div key={p.top+p.left} className={`broken-pixel`} style={pixel[i]}></div>)
+  return pixel.map((p,i) => <div key={p.top+p.left+i} className={`broken-pixel`} style={pixel[i]}></div>)
 }
 
 
 export default BrokenPixel
 
-function breakIt (e) {
+function breakPixel (update) {
   let clicks = 0
   let lastClick = 0;
   return function (e) {
@@ -39,7 +40,32 @@ function breakIt (e) {
         left:e.clientX+'px', 
         background: ['red','orange','yellow','lime','blue','purple'][Math.random()*6|0]
       }
-      setPixel((pixels)=> [...pixels,newPixel]);
+      update((pixels)=> [...pixels,newPixel]);
+      clicks = 0;
+    }
+    lastClick = Date.now();
+  }
+};
+
+function breakPixels (update) {
+  let clicks = 0
+  let lastClick = 0;
+
+  return function (e) {
+    const delta =  Date.now() - lastClick;
+    if (delta < 500) clicks++;
+    if (clicks > 3) {
+      const newPixels = []
+      for (let i = 0; i < clicks * clicks; i++) {
+        const distance = i * i / 2;
+        newPixels.push({
+          top: (e.clientY) + (Math.random() * distance*2) - distance + 'px', 
+          left: (e.clientX) + (Math.random() * distance*2) - distance + 'px',
+          background: ['red','orange','yellow','lime','blue','purple'][Math.random()*6|0]
+        })
+      }
+      console.log('newPixels', newPixels);
+      update((pixels)=> [...pixels,...newPixels]);
       clicks = 0;
     }
     lastClick = Date.now();
