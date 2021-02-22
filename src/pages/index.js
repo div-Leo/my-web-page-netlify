@@ -11,7 +11,7 @@ import '../styles/index.sass';
 const IndexPage = () => {
   return (
     <>
-      <SEO title="Portfolio" keywords={[`portfolio`, `frontend`, `developer`]} />
+      <SEO title="Web Site" keywords={[`portfolio`, `frontend`, `developer`]} />
       <Glitch/>
       <About/>
       <Skills/>

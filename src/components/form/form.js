@@ -64,6 +64,7 @@ const Form = () => {
             value={state.reply_to !== "error" ? state.reply_to : ''} 
             type="text" 
             name="reply_to" 
+            data-alt="email"
             onChange={handleChange} 
             placeholder="Your Email" /> 
           <input 
@@ -72,16 +73,18 @@ const Form = () => {
             type="text" 
             onChange={handleChange} 
             name="subject" 
+            data-alt="subject"
             placeholder="Subject*" />
           <textarea 
             className={`pointer ${state.text === "error" ? "form_input--error" : "form_input"}`} 
             value={state.text  !== "error" ? state.text : ''} 
             name="text" 
             onChange={handleChange} 
+            data-alt="message"
             placeholder="Message*"></textarea>
           <div className="form_submit">
-            <a className="pointer">
-              <button type="submit" disabled={status === 'pending'} >
+            <a className="pointer" data-alt="submit">
+              <button type="submit" disabled={status === 'pending'}>
                 {status === 'pending' ? <Spinner/> : 'send'}
               </button>
             </a>

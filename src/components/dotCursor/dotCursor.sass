@@ -234,7 +234,7 @@ $size: 4px
   border-radius: 50%
   transform: translate(-50%, -50%)
   transform-origin: center
-  transition: opacity .3s ease-in-out, transform .3s ease-in-out
+  transition: opacity .5s ease-in-out, transform .5s ease-in-out, background .5s ease-in-out
   opacity: 1
   &--hidden
     opacity: 0
@@ -256,14 +256,17 @@ $size: 4px
   z-index: 8
   background-image: radial-gradient(circle farthest-corner at 10% 20%)
   animation: blobRadius 5s ease-in-out infinite
-  opacity: .7
+  opacity: .2
+  // mix-blend-mode: difference
   +themify($themes)
-    border: 1.5px solid themed('primary')
-    // background: themed('primary')
+    // border: 1px solid themed('primary')
+    background: themed('primary')
   &--hover
     @extend .outline_cursor
     +themify($themes)
-      background: rgba(themed('secondary'), .6)
+      // background: rgba(themed('secondary'), .6)
+      color: themed('secondary')
+    padding: 5px
     opacity: 1
     font-size: 1rem
     font-weight: 500

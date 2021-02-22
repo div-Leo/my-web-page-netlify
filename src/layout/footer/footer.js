@@ -1,12 +1,13 @@
 import React from "react";
 
-import { FaGithub, FaLinkedinIn, FaBehance, FaMediumM } from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn, FaBehance, FaMediumM, FaCodepen } from 'react-icons/fa';
 
 const socials = [
-  ['https://github.com/Leon31', FaGithub, 'Github'], 
+  ['https://github.com/div-Leo', FaGithub, 'Github'], 
   ['https://www.linkedin.com/in/leonardo-di-vittorio/', FaLinkedinIn, 'LinkedIn'],
   ['https://www.behance.net/leonardodid6d0', FaBehance, 'Behance'],
   ['https://medium.com/@div.leo', FaMediumM, 'Medium'],
+  ['https://codepen.io/div-Leo', FaCodepen, 'Codepen'],
 ];
 
 function renderSocials () { 

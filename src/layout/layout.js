@@ -11,7 +11,7 @@ const Layout = ({ children, location, ...props }) => {
   
   useEffect(() => {
     const isNight = new Date().getHours() < 8 || new Date().getHours() > 19;
-    document.getElementsByTagName('html')[0].classList.add(isNight ? 'dark_theme' : 'light_theme')
+    document.getElementsByTagName('html')[0].classList.add(true ? 'dark_theme' : 'light_theme')
   },[])
   
   return (
